@@ -46,7 +46,7 @@ public class UserService {
             String sql = "INSERT INTO users(username,password) VALUES (?,?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, username);
-                preparedStatement.setString(1, hashPassword);
+                preparedStatement.setString(2, hashPassword);
                 preparedStatement.executeUpdate();
                 return true; //Регистрация прошла успешна
             }
@@ -55,7 +55,6 @@ public class UserService {
         }
         return false; //Ошибка при регистрации
     }
-
 }
 
 
